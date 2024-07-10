@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do List</title>
+    <style>
+        /* Add your desired background color for overdue tasks */
+        .overdue {
+            background-color: #ffcccc;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>To-Do List</h1>
+        <input type="text" id="taskInput" placeholder="Enter a task">
+        <input type="date" id="dueDateInput">
+        <button onclick="addTask()">Add Task</button>
+        <ul id="taskList"></ul>
+    </div>
+
+    <script>
+        const toDoList = [];
+
+        function addTask() {
+            const taskInput = document.getElementById("taskInput");
+            const dueDateInput = document.getElementById("dueDateInput");
+            const task = taskInput.value.trim();
+            const dueDate = dueDateInput.value;
+
+            if (task && dueDate) {
+                toDoList.push({ task, dueDate });
+                taskInput.value = "";
+                dueDateInput.value = "";
+
+                displayList();
+            }
+        }
+
+        function displayList() {
+            const taskList = document.getElementById("taskList");
+            taskList.innerHTML = "";
+            toDoList.forEach((task) => {
+                const listItem = document.createElement("li");
+                const formattedDueDate = new Date(task.dueDate).toLocaleDateString();
+                const status = new Date() > new Date(task.dueDate) ? "Overdue" : "Due";
+                listItem.textContent = `${task.task} (${status} ${formattedDueDate})`;
+                listItem.classList.add(status.toLowerCase()); // Add class for styling
+                taskList.appendChild(listItem);
+            });
+        }
+    </script>
+</body>
+</html>

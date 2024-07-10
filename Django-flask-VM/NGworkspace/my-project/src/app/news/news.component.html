@@ -1,0 +1,20 @@
+<p>news works!</p>
+<table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Author</th>
+        <th>Published</th>
+        <th>Description</th>
+        <th>Title</th>
+        <th>Image</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let news of newsdata">
+        <td>{{ news.author }}</td>
+        <td>{{ news.publishedAt}}</td>
+        <td>{{ news.description }}</td>
+        <td>{{ news.title }}</td>
+        <td > <img src="{{ news.urlToImage}}" alt="no image" style="height: 100px; width: 100px;"></td>
+      </tr>
+    </tbody>

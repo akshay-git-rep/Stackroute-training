@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Student Registration</h1>
+    <form>
+        <table>
+            
+                <th>Student name</th>
+                    <td>
+                        <input type="text" placeholder="Enter your name here" required/>
+                    </td>
+            <tr>
+                <th>City Name</th>
+                    <td>
+                        <input type="text" placeholder="Enter your city name" required/>
+                    </td>
+            </tr>
+            <tr>
+                <th>Date of birth</th>
+                    <td>
+                        <input type="date" placeholder="select DOB" max="2025-12-31" min="2015-01-01" required>
+                    </td>
+            </tr>
+            <tr>
+                <th>Age</th>
+                    <td>
+                        <input type="number" placeholder="age" max="60" min="18" required>
+                    </td>
+            </tr>
+            <tr>
+            <th>Select stream</th>
+            <td>
+                <select>
+                    <option>None</option>
+                    <option>Science</option>
+                    <option>Arts</option>
+                    <option>Commerce</option>
+                </select>
+            </td>
+            </tr>
+            <tr>
+                <th>Duration of years</th>
+                <td>
+                    <input type="number" min="1" max="5" required>
+                </td>
+            </tr>
+            <tr>
+                <th>PAN</th>
+                <td>
+                    <input type="text" placeholder="Enter pan number" pattern="^[A-Z]{5}[0-9]{4}[A-Z]{1}$" required>
+                </td>
+            </tr>
+            <th>select skills</th>
+            <td>
+                <input type="checkbox" /><label>C</label>
+                <input type="checkbox" /><label>C++</label>
+                <input type="checkbox" /><label>JAVA</label> 
+            </td>
+            <tr>
+            <th>Select Sports activity</th>
+            <td>
+                <input type="checkbox" id="chkBskball" name="sports"/><label for="chkBskball">Basket Ball</label>
+                <input type="checkbox" id="chkSwimming" name="sports"/><label for="chkSwimming">Swimming</label>
+                <input type="checkbox" id="chkCricket" name="sports"/><label for="chkCricket">Cricket</label>
+            </td>
+            </tr>
+
+            <tr>
+                <th>Select gender</th>
+                <td>
+                <input type="radio" id="chkmale" name="gender" /><label for="chkmale">Male</label>
+                <input type="radio" id="chkfemale" name="gender"/><label for="chkfemale">Female</label>
+                </td>
+            </tr>
+
+            <tr>
+                <th>Select mode</th>
+                <td>
+                    <input type="radio" id="chkonline" name="mode" /><label for="chkonline">Online</label>
+                    <input type="radio" id="chkoffline" name="mode" /><label for="chkoffline">Offline</label>
+                </td>
+            </tr>
+
+            <td></td>
+            <td>
+                <input type="submit" value="Submit">
+            </td> 
+        
+        </table>
+    
+    </form>
+</body>
+</html>

@@ -1,0 +1,23 @@
+<p>employess works!</p>
+
+<div class="container">
+
+    <h2> Calculate Your Tax Here...</h2>
+     
+        Your Id: <input type="textbox" [(ngModel)]="id" style="color:lightslategray" /> <br><br>
+        Your Name: <input type="textbox"[(ngModel)]="name" style="color:lightslategray" /> <br><br>
+        Your salary: <input type="textbox" [(ngModel)]="salary" style="color:lightslategray" /> <br><br>
+        <button (click)="getTax()" class = "btn btn-primary"> Get Details</button>
+     
+        
+    <br/>
+    <br />
+    <br />
+
+    <h4>
+      Details are : <p style="color:crimson" *ngIf="taxAmount > 0"> Hello {{name}}, Your ID is {{id}} and Your Tax
+        Amount is <span>{{taxAmount | currency:'INR':'symbol'}}</span> for the salary <span>{{salary | currency:'INR':'symbol'}}</span></p>
+
+    </h4>
+</div>
+

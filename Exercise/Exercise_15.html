@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>EMI Calculator</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        <h2>EMI Calculator</h2>
+        <form id="emiForm">
+            <div class="form-group">
+                <label for="loanAmount">Loan Amount:</label>
+                <input type="number" class="form-control" id="loanAmount" required>
+            </div>
+            <div class="form-group">
+                <label for="interestRate">Interest Rate:</label>
+                <input type="number" class="form-control" id="interestRate" required>
+            </div>
+            <div class="form-group">
+                <label for="loanTenure">Loan Tenure (in months):</label>
+                <input type="number" class="form-control" id="loanTenure" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Calculate</button>
+        </form>
+        <h3 id="emi"></h3>
+        <h3 id="totalInterest"></h3>
+        <h3 id="totalPayment"></h3>
+        <table class="table" id="emiTable">
+            <thead>
+                <tr>
+                    <th>SL.NO</th>
+                    <th>EMI Amount</th>
+                    <th>Principal Paid</th>
+                    <th>Interest Paid</th>
+                    <th>Remaining Loan Amount</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </div>
+    <script>
+        function calculateEMI(e) {
+            e.preventDefault();
+            var P = parseFloat(document.getElementById('loanAmount').value);
+            var r = parseFloat(document.getElementById('interestRate').value) / 1200;
+            var n = parseFloat(document.getElementById('loanTenure').value);
+            var EMI = (P * r * Math.pow(1 + r, n)) / (Math.pow(1 + r, n) - 1);
+            document.getElementById('emi').innerText = 'Monthly EMI: ' + EMI.toFixed(2);
+            document.getElementById('totalInterest').innerText = 'Total Interest: ' + ((n * EMI) - P).toFixed(2);
+            document.getElementById('totalPayment').innerText = 'Total Payment (Principal + Interest): ' + (n * EMI).toFixed(2);
+            var tbody = document.getElementById('emiTable').getElementsByTagName('tbody')[0];
+            tbody.innerHTML = '';
+            var loanLeft = P;
+            for(var i = 1; i <= n; i++) {
+                var interest = loanLeft * r;
+                var principal = EMI - interest;
+                loanLeft -= principal;
+                var row = tbody.insertRow();
+                row.insertCell(0).innerText = i;
+                row.insertCell(1).innerText = Math.ceil(EMI);
+                row.insertCell(2).innerText = Math.ceil(principal);
+                row.insertCell(3).innerText = Math.ceil(interest);
+                row.insertCell(4).innerText = Math.ceil(loanLeft);
+            }
+        }
+ 
+        document.getElementById('emiForm').addEventListener('submit', calculateEMI);
+    </script>
+</body>
+</html>

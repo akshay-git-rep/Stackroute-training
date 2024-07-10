@@ -1,0 +1,137 @@
+<style>
+  table {
+    width: 80%;
+    border-collapse: collapse;
+    background-color: #f8c366;
+  }
+  th,
+  td {
+    padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid #b2c1c9;
+  }
+  td button {
+    display: flex inline;
+  }
+  .actions {
+    width: 300px;
+    display: flex;
+    padding: 1rem;
+    justify-content: space-around;
+  }
+  th {
+    background-color: #333;
+    color: rgb(128, 128, 128);
+  }
+</style>
+
+<div class="accordion accordion-flush" id="accordionFlushExample">
+  <div class="accordion-item">
+    <h2 class="accordion-header">
+      <button
+        class="accordion-button collapsed"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#flush-collapseOne"
+        aria-expanded="false"
+        aria-controls="flush-collapseOne"
+      >
+        Add a Laptop
+      </button>
+    </h2>
+    <div
+      id="flush-collapseOne"
+      class="accordion-collapse collapse"
+      data-bs-parent="#accordionFlushExample"
+    >
+      <div class="accordion-body">
+        <form [formGroup]="lapForm" (ngSubmit)="onSubmit()">
+          <div class="form-group">
+            <label for="id">Laptop Id: </label>
+            <input
+              type="text"
+              class="form-control"
+              id="id"
+              formControlName="id"
+              placeholder="Enter Laptop Id"
+              required
+            />
+            <br />
+          </div>
+
+          <div class="form-group">
+            <label for="laptop-Model">Laptop Model: </label>
+            <input
+              type="text"
+              class="form-control"
+              id="model"
+              formControlName="model"
+              placeholder="Enter Laptop Model"
+              required
+            />
+            <br />
+          </div>
+          <div class="form-group">
+            <label for="laptop-company">Laptop Company: </label>
+            <input
+              type="text"
+              class="form-control"
+              id="company"
+              formControlName="company"
+              placeholder="Enter Laptop Company"
+              required
+            />
+            <br />
+          </div>
+          <div class="form-group">
+            <label for="Price">Laptop Price: </label>
+            <input
+              type="text"
+              class="form-control"
+              id="price"
+              formControlName="price"
+              placeholder="Enter Laptop Price"
+              required
+            />
+            <br />
+          </div>
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+        <code></code>
+      </div>
+    </div>
+  </div>
+  <h3>Marked Laptops : {{ markCount }}</h3>
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Model</th>
+        <th>Company</th>
+        <th>Price</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let lap of laptops">
+        <td id="ID">{{ lap.id }}</td>
+        <td>
+          {{ lap.model
+          }}<span id="marker" *ngIf="markedLaptops.has(lap.id)">*</span>
+        </td>
+        <td>{{ lap.company }}</td>
+        <td>{{ lap.price }}</td>
+        <td>
+          <div class="actions">
+            <button class="btn btn-primary" (click)="markLaptop(lap.id)">
+              Mark
+            </button>
+            <button class="btn btn-primary" (click)="deleteLaptop(lap.id)">
+              Delete
+            </button>
+          </div>
+        </td>
+      </tr>
+
+    </tbody>
+  </table>

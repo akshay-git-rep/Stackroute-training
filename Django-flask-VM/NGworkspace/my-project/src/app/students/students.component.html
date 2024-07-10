@@ -1,0 +1,11 @@
+<p>students works!</p>
+
+    <div *ngFor="let user of users">
+      <h3>{{ user.name }}</h3>
+      <ul *ngFor="let qualification of user.qualification">
+        <p><b><u>{{ qualification.title }}</u></b></p>
+        <ul *ngFor="let subject of qualification.subjects">
+            <p>{{ subject.title }}</p>
+        </ul>
+      </ul>
+    </div>

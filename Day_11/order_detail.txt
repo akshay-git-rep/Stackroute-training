@@ -1,0 +1,6 @@
+Order Items:
+  - Mobile (Sony) - $1052.10
+  - Phone (MI) - $1609.00
+  - Laptop (HP) - $9800.99
+  - Laptop (DELL) - $9999.00
+Total Price: $22461.09

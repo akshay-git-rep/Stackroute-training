@@ -1,0 +1,8 @@
+Metric,Value
+Number of data points,3
+Average of Population,5.5
+Minimum of Population,3.0
+Maximum of Population,8.0
+Average of Area (km²),798.0
+Minimum of Area (km²),625.0
+Maximum of Area (km²),971.0

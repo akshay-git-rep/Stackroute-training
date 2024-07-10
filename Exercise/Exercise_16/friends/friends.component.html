@@ -1,0 +1,6 @@
+<h2>Friend Names</h2>
+<ul>
+<li *ngFor="let name of friendNames" [style.color]="name.startsWith('R') ? 'red' : (name.startsWith('B') ? 'blue' : 'black')">
+    {{ name }}
+</li>
+</ul>
